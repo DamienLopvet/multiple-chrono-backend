@@ -7,6 +7,7 @@ exports.createChrono = (req, res, next) =>{
         ...chronoObject,
         userId: req.token.userId,
         });
+
     chrono.save().then(()=>{
         res.status(201).json({message: "chrono was created successfully !"})
         })
@@ -26,6 +27,8 @@ Chrono.find({userId : req.token.userId})
 }).catch((error)=>res.status(400).json({error:error}))
 
 }
+
+
 exports.updateChrono = (req, res, next)=>{
 Chrono.findOne({
     _id:req.params.id

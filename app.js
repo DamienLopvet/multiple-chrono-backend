@@ -11,7 +11,6 @@ const mongoose = require("mongoose");
 //import routers
 const chronosRoutes = require("./routes/chronos");
 const userRoutes = require("./routes/user");
-const colorsRoutes = require("./routes/colors")
 
 //import environment variables module
 require("dotenv").config();
@@ -46,7 +45,6 @@ app.use(express.json());
 
 //set up router with frontend root
 app.use("/api/chronos", chronosRoutes);
-app.use("/api/chronos/colors", colorsRoutes)
 app.use("/api/auth", userRoutes);
 
 
