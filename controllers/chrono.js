@@ -1,13 +1,12 @@
 const Chrono = require("../models/chrono");
 
 exports.createChrono = (req, res, next) =>{
-    const chronoObject = req.body.chrono;
+    const chronoObject = req.body.chronos;
     delete chronoObject._id;
     const chrono = new Chrono({
-        ...chronoObject,
+        chronos: chronoObject,
         userId: req.token.userId,
         });
-
     chrono.save().then(()=>{
         res.status(201).json({message: "chrono was created successfully !"})
         })

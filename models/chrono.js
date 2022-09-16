@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
-const chronoSchema = mongoose.Schema({
-  title: { type: String, required: true},
+// const chronos = new mongoose.Schema({
+//   arrayOfChronos:{ type: Array, default: undefined}
+// });
+
+
+const chronoSchema = new mongoose.Schema({
   userId: { type: String, required: true },
-  start:{ type: Boolean, required: false,  default: false },
-  starTime: { type: Number, required: false },
-  showEditTitle: { type: Boolean, required: false,  default: false },
-  counterInterval: {type:Number, required: false, default :"0" },
-  chronoState: { type:Number, default :"0", required: false }  
-});
+  chronos: {type:Array, default:undefined}
+ });
+
 
 module.exports = mongoose.model("Chrono", chronoSchema);
