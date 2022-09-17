@@ -16,7 +16,14 @@ exports.signup = (req, res, next) => {
       });
       user
         .save()
-        .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
+        .then(() => res.status(201).json({
+          message:'User created !',
+          userId: user._id,
+          token: jwt.sign({ userId: user._id }, process.env.TOKEN, {
+            expiresIn: "1 year",
+            
+          }),
+        }))
         .catch((error) => res.status(400).json({ error }));
     })
     .catch((error) => res.status(500).json({ error }));
