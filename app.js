@@ -16,10 +16,11 @@ const userRoutes = require("./routes/user");
 require("dotenv").config();
 
 //connection to mongoose
+mongoose.set("strictQuery", false);
 mongoose  
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@p6database.0lkz8.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    { useNewUrlParser: true, useUnifiedTopology: true, }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
